@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { registerApi } from "../../api/Api";
 
 const NewRegister = () => {
   // Making useState for each input
@@ -10,7 +12,7 @@ const NewRegister = () => {
   // State for Error
   const [firstNameError, setFirstNameError] = useState("");
   const [lastNameError, setLastNameError] = useState("");
-  const [emailError, setErrorError] = useState("");
+  const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
 
   //Validation
@@ -20,18 +22,29 @@ const NewRegister = () => {
     if (firstName === "") {
       setFirstNameError("Please Enter Your FirstName");
       isValid = false;
-    } else if (lastName === "") {
-      setFirstNameError("Please Enter Your LastName");
+    } else {
+      setFirstNameError("");
+    }
+    if (lastName === "") {
+      setLastNameError("Please Enter Your LastName");
       isValid = false;
-    } else if (email === "") {
-      setFirstNameError("Please Enter Your email");
+    } else {
+      setLastNameError("");
+    }
+    if (email === "") {
+      setEmailError("Please Enter Your email");
       isValid = false;
-    } else if (password === "") {
-      setFirstNameError("Please Enter Your password");
+    } else {
+      setEmailError("");
+    }
+    if (password === "") {
+      setPasswordError("Please Enter Your password");
       isValid = false;
     } else if (password.length < 6) {
       setPasswordError("Password must be 6 characters");
       isValid = false;
+    } else {
+      setPasswordError("");
     }
     return isValid;
   };
@@ -45,6 +58,30 @@ const NewRegister = () => {
     if (!isValid) {
       return; // Stop the process
     }
+
+    // now, form is valid
+    // data - JSON
+    // Making JSON | Key : Value | Key should be match to db
+
+    const data = {
+      firstname: firstName,
+      lastname: lastName,
+      email: email,
+      password: password,
+    };
+
+    // Calling API
+    registerApi(data)
+      .then((response) => {
+        console.log(response);
+        if (response.status === 201) {
+          alert("User Created Successfully!");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("Server Error!");
+      });
   };
 
   return (
@@ -118,10 +155,10 @@ const NewRegister = () => {
             >
               Sign up
             </button>
-            <p>
+            <Link className="text-decoration-none text-black" to={"/Login"}>
               Already have an account?
               <span className="text-info"> Log in</span>
-            </p>
+            </Link>
           </form>
         </div>
       </div>

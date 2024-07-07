@@ -1,18 +1,39 @@
 {
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "firstname": "Ram",
       "lastname": "Kumar",
       "email": "ram@gmail.com",
       "password": "123456"
     },
     {
-      "id": 2,
+      "id": "2",
       "firstname": "Sujan",
       "lastname": "Baidhya",
       "email": "sujan@gmail.com",
       "password": "654321"
+    },
+    {
+      "id": "0ded",
+      "firstname": "test",
+      "lastname": "test1",
+      "email": "test1@gmail.com",
+      "password": "Hisokamorrow1"
+    },
+    {
+      "id": "16a6",
+      "firstname": "test",
+      "lastname": "test1",
+      "email": "test1@gmail.com",
+      "password": "Hisokamorrow1"
+    },
+    {
+      "id": "fa18",
+      "firstname": "new",
+      "lastname": "new1",
+      "email": "new@gmail.com",
+      "password": "123456"
     }
   ]
 }

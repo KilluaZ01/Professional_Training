@@ -1,4 +1,4 @@
-/* .login-container{
+.login-container{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -51,4 +51,4 @@ form label{
     margin: 0;
     padding: 0;
     text-decoration: wavy;
-} */
+}

@@ -1,6 +1,8 @@
 import { useState } from "react";
 import React from "react";
 import "./Login.css";
+import { Link } from "react-router-dom";
+import { loginApi } from "../../api/Api";
 
 const Login = () => {
   // Making State for Email and Password
@@ -48,6 +50,22 @@ const Login = () => {
     if (!validation()) {
       return;
     }
+
+    // Open dashboard (ONLY FOR TESTING)
+    loginApi(email)
+      .then((response) => {
+        if (response.data.length === 0) {
+          alert("User Not Found");
+        } else if (response.data[0].password !== password) {
+          alert("Incorrect Password");
+        } else {
+          alert("Login Successful!");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("Server Error!");
+      });
     // Open Dashboard
   };
 
@@ -76,7 +94,7 @@ const Login = () => {
         <button onClick={handleClickLogin} className="login-btn">
           Login
         </button>
-        <p>Dont have an account? Create an account</p>
+        <Link to={"/NewRegister"}>Dont have an account? Create an account</Link>
       </form>
     </div>
   );

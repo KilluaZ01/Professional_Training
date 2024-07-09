@@ -72,7 +72,6 @@ const Login = () => {
   return (
     <div className="login-container">
       <h3>Login to your account!</h3>
-
       <form className="login-form">
         <label htmlFor="email">Email Address</label>
         <input

@@ -54,7 +54,6 @@ const Register = () => {
   return (
     <div className="container m-5">
       <h3 className="text-center">Create your Account!</h3>
-
       <div className="row justify-content-center">
         <form className="col-12 col-md-8 col-lg-6 col-xl-4 register-form">
           <label>First Name</label>

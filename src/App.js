@@ -4,10 +4,12 @@ import Homepage from './pages/homepage/Homepage'
 import Login from './pages/login/Login'
 import Register from './pages/register/Register'
 import NewRegister from './pages/newregister/NewRegister'
+import Navbar from './components/Navbar'
 
 const App = () => {
   return (
     <Router>
+      <Navbar/>
       <Routes>
         <Route path='/home' element={<Homepage/>}/>
         <Route path='/login' element={<Login/>}/>

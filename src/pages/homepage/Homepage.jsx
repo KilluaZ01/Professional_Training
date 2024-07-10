@@ -1,8 +1,9 @@
 // First: Import - React
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { fetchUsers } from "../../api/Api";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../../redux_storage/userSlice";
+import EditUserModal from "../../components/EditUserModal";
 
 // Second: Make a function (Filename)
 const Homepage = () => {
@@ -29,6 +30,21 @@ const Homepage = () => {
       });
   }, []);
 
+  // For editing users
+  const [selectedUser, setSelectedUser] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Function for open and close
+  const handleOpenModal = (user) => {
+    setSelectedUser(user);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedUser(null);
+    setIsModalOpen(false);
+  };
+
   return (
     <>
       {/* table */}
@@ -43,26 +59,41 @@ const Homepage = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>123</td>
-            <td>Sujan</td>
-            <td>Baidhya</td>
-            <td>ILove69@gmail.com</td>
-            <td>
-              <di className="btn-group">
-                <button className="btn btn-success">Edit</button>
-                <button className="btn btn-danger">Delete</button>
-              </di>
-            </td>
-          </tr>
+          {users.map((singleUser) => (
+            <tr>
+              <td>{singleUser.id}</td>
+              <td>{singleUser.firstname}</td>
+              <td>{singleUser.lastname}</td>
+              <td>{singleUser.email}</td>
+              <td>
+                <di className="btn-group">
+                  <button
+                    className="btn btn-success"
+                    onClick={() => handleOpenModal(singleUser)}
+                  >
+                    Edit
+                  </button>
+                  <button className="btn btn-danger">Delete</button>
+                </di>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
+
+      {/* if user click edit, then only show modal */}
+      {isModalOpen && (
+        <EditUserModal selectedUser={selectedUser} onClose={handleCloseModal} />
+      )}
     </>
   );
 };
 
 // Export
 export default Homepage;
+
+// Mapping [{user1},{user2}]
+// index:0,1,2,3,4,5
 
 /*
 
@@ -74,4 +105,12 @@ Logic
 5. Fetch from storage
 6. Displaying in UI
 
+*/
+
+/* 
+  Logic for edit data
+  Data = Table (Row - Button - Edit)
+  Select that specific user
+  Open the popup modal, with that selected data
+  Fill the modal
 */

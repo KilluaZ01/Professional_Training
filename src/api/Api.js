@@ -17,3 +17,9 @@ export const loginApi = (email) => Api.get(`/users?email=${email}`);
 
 // Fetch User API
 export const fetchUsers = () => Api.get("/users");
+
+// Update user API
+export const updateUser = (id, data) => Api.put(`/users/${id}`, data);
+
+// Delete user API
+export const deleteUser = (id) => Api.delete(`/users/${id}`);

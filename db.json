@@ -1,46 +1,22 @@
 {
   "users": [
     {
-      "id": "1",
-      "firstname": "Ram",
-      "lastname": "Kumar",
-      "email": "ram@gmail.com",
-      "password": "123456"
-    },
-    {
-      "id": "2",
-      "firstname": "Sujan",
+      "firstname": "Naughty",
       "lastname": "Baidhya",
-      "email": "sujan@gmail.com",
-      "password": "654321"
+      "email": "6969@gmail.com",
+      "id": "0ded"
     },
     {
-      "id": "0ded",
-      "firstname": "test",
-      "lastname": "test1",
-      "email": "test1@gmail.com",
-      "password": "Hisokamorrow1"
+      "firstname": "Sujan",
+      "lastname": "Naughty",
+      "email": "NobodyNobody@gmail.com",
+      "id": "16a6"
     },
     {
-      "id": "16a6",
-      "firstname": "test",
-      "lastname": "test1",
-      "email": "test1@gmail.com",
-      "password": "Hisokamorrow1"
-    },
-    {
-      "id": "fa18",
-      "firstname": "new",
-      "lastname": "new1",
-      "email": "new@gmail.com",
-      "password": "123456"
-    },
-    {
-      "id": "eb5a",
-      "firstname": "Arik",
-      "lastname": "Rai",
-      "email": "raiarik97@gmail.com",
-      "password": "Hisokamorrow1"
+      "firstname": "Sujan Kumar",
+      "lastname": "Naughty Baidhya",
+      "email": "IAmNaughty@gmail.com",
+      "id": "fa18"
     }
   ]
 }

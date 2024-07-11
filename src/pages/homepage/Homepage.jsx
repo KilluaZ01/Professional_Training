@@ -1,6 +1,6 @@
 // First: Import - React
 import React, { useEffect, useState } from "react";
-import { fetchUsers } from "../../api/Api";
+import { deleteUser, fetchUsers } from "../../api/Api";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../../redux_storage/userSlice";
 import EditUserModal from "../../components/EditUserModal";
@@ -45,6 +45,27 @@ const Homepage = () => {
     setIsModalOpen(false);
   };
 
+  // Delete user
+  const handleDelete = (id) => {
+    const confirm = window.confirm("Are you sure you want to delete?");
+    if (!confirm) {
+      return;
+    }
+
+    // Delete
+    deleteUser(id)
+      .then((res) => {
+        if (res.statusText === "OK") {
+          alert("Deleted!");
+          window.location.reload();
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("Server Error!");
+      });
+  };
+
   return (
     <>
       {/* table */}
@@ -73,7 +94,12 @@ const Homepage = () => {
                   >
                     Edit
                   </button>
-                  <button className="btn btn-danger">Delete</button>
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => handleDelete(singleUser.id)}
+                  >
+                    Delete
+                  </button>
                 </di>
               </td>
             </tr>
